@@ -10,6 +10,9 @@ This project provides a streamlit application that empowers you to create compel
    - A detailed prompt to guide the AI's description (e.g., "Write a product description.").
      
 * Process: The app leverages Vertex AI, in particula Gemini Pro model, to analyze the image content and understand your prompt. It then crafts descriptions that highlight the image's key features and align with the style you've indicated.
+  
+![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image1.png)
+
 
 **2. JSON-Based Description Generation**
 * Input:
@@ -18,6 +21,7 @@ This project provides a streamlit application that empowers you to create compel
 
 * Process: The app combines your prompt with the product data from the JSON file. The Vertex AI model generates descriptions that incorporate the factual product information and adhere to the style and tone you've specified in your prompt.
 
+![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image2.png)
 
 ## Run the Application locally (on Cloud Shell)
 NOTE: Before you move forward, ensure that you have followed the instructions in SETUP.md. Additionally, ensure that you have cloned this repository and you are currently in the gemini-streamlit-cloudrun folder. This should be your active working directory for the rest of the commands.
