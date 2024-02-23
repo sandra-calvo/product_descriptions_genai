@@ -5,6 +5,6 @@ WORKDIR /app
 
 COPY . ./
 
-RUN pip install -r requirements1.txt
+RUN pip install -r requirements.txt
 
-ENTRYPOINT ["streamlit", "run", "genaidemo.py", "--server.port=8080", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
