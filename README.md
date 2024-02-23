@@ -1,18 +1,25 @@
 # Product Description Generator with GenAI and Streamlit
 
-APLICATION DESCRIPTION 
-This project provides a flexible Streamlit application to generate product descriptions using the power of Vertex AI's GenAI models.
+## Description
 
-**Key Features**
+This project provides a streamlit application that empowers you to create compelling product descriptions with the help of advanced generative AI models from Google's Vertex AI. It offers two flexible modes to meet your specific needs:
 
-* **Dual-Mode Generation:**
-    * Describe products from images (provide an image URL and a descriptive prompt).
-    * Generate descriptions based on structured product data in JSON format, combined with a user-supplied prompt.
-* **Powered by Vertex AI GenAI:** Leverages advanced generative text capabilities from Vertex AI.
-* **User-Friendly Streamlit Interface:** Provides an intuitive web interface for product description generation.
+**1. Image-Based Description Generation**
+* Input:
+   - A valid image URL (e.g., a product photo).
+   - A detailed prompt to guide the AI's description (e.g., "Write a product description.").
+     
+* Process: The app leverages Vertex AI, in particula Gemini Pro model, to analyze the image content and understand your prompt. It then crafts descriptions that highlight the image's key features and align with the style you've indicated.
+
+**2. JSON-Based Description Generation**
+* Input:
+   - A JSON file containing structured product information (e.g., name, key specifications, materials).
+   - A descriptive prompt to provide context and the desired tone of the descriptions (e.g., "Write an engaging and informative product description for this high-performance laptop").
+
+* Process: The app combines your prompt with the product data from the JSON file. The Vertex AI model generates descriptions that incorporate the factual product information and adhere to the style and tone you've specified in your prompt.
 
 
-**Run the Application locally (on Cloud Shell)**
+## Run the Application locally (on Cloud Shell)
 NOTE: Before you move forward, ensure that you have followed the instructions in SETUP.md. Additionally, ensure that you have cloned this repository and you are currently in the gemini-streamlit-cloudrun folder. This should be your active working directory for the rest of the commands.
 
 To run the Streamlit Application locally (on cloud shell), we need to perform the following steps:
@@ -31,13 +38,15 @@ Your application requires access to two environment variables:
 
 GCP_PROJECT : This the Google Cloud project ID.
 GCP_REGION : This is the region in which you are deploying your Cloud Run app. For e.g. us-central1.
-These variables are needed since the Vertex AI initialization needs the Google Cloud project ID and the region. The specific code line from the app.py function is shown here: vertexai.init(project=PROJECT_ID, location=LOCATION)
+
+These variables are needed since the Vertex AI initialization needs the Google Cloud project ID and the region. 
+The specific code line from the app.py function is shown here: vertexai.init(project=PROJECT_ID, location=LOCATION)
 
 In Cloud Shell, execute the following commands:
 
 ```bash
 export GCP_PROJECT='<Your GCP Project Id>'  # Change this
-export GCP_REGION='us-central1'             # If you change this, make sure the region is supported.
+export GCP_REGION='<Your region>'             # If you change this, make sure the region is supported.
 ```
 To run the application locally, execute the following command:
 
@@ -53,38 +62,42 @@ streamlit run app.py \
 
 The application will startup and you will be provided a URL to the application. Use Cloud Shell's web preview function to launch the preview page. You may also visit that in the browser to view the application. Choose the functionality that you would like to check out and the application will prompt the Vertex AI Gemini API and display the responses.
 
-Build and Deploy the Application to Cloud Run
+## Build and Deploy the Application to Cloud Run
 NOTE: Before you move forward, ensure that you have followed the instructions in SETUP.md. Additionally, ensure that you have cloned this repository and you are currently in the gemini-streamlit-cloudrun folder. This should be your active working directory for the rest of the commands.
 
 To deploy the Streamlit Application in Cloud Run, we need to perform the following steps:
 
 Your Cloud Run app requires access to two environment variables:
 
-GCP_PROJECT : This the Google Cloud project ID.
-GCP_REGION : This is the region in which you are deploying your Cloud Run app. For e.g. us-central1.
+* GCP_PROJECT : This the Google Cloud project ID.
+* GCP_REGION : This is the region in which you are deploying your Cloud Run app. For e.g. us-central1.
 
-These variables are needed since the Vertex AI initialization needs the Google Cloud project ID and the region. The specific code line from the app.py function is shown here: vertexai.init(project=PROJECT_ID, location=LOCATION)
+These variables are needed since the Vertex AI initialization needs the Google Cloud project ID and the region. 
+The specific code line from the app.py function is shown here: vertexai.init(project=PROJECT_ID, location=LOCATION)
 
-In Cloud Shell, execute the following commands:
+**1. In Cloud Shell, execute the following commands:**
 
 ```bash
 export GCP_PROJECT='<Your GCP Project Id>'  # Change this
-export GCP_REGION='us-central1'             # If you change this, make sure the region is supported.
+export GCP_REGION='<Your region>'           # If you change this, make sure the region is supported.
 ```
 Now you can build the Docker image for the application and push it to Artifact Registry. To do this, you will need one environment variable set that will point to the Artifact Registry name. Included in the script below is a command that will create this Artifact Registry repository for you.
+
+**2. Create an image and push to the Artifact Registry**
 
 In Cloud Shell, execute the following commands:
 
 ```bash
 export AR_REPO='<REPLACE_WITH_YOUR_AR_REPO_NAME>'  # Change this
-export SERVICE_NAME='gemini-streamlit-app' # This is the name of our Application and Cloud Run service. Change it if you'd like.
+export SERVICE_NAME='<REPLACE_WITH_YOUR_SERVICE_NAME>' # This is the name of our Application and Cloud Run service. Change it if you'd like.
 
 #make sure you are in the active directory for 'gemini-streamlit-cloudrun'
 gcloud artifacts repositories create "$AR_REPO" --location="$GCP_REGION" --repository-format=Docker
 gcloud auth configure-docker "$GCP_REGION-docker.pkg.dev"
 gcloud builds submit --tag "$GCP_REGION-docker.pkg.dev/$GCP_PROJECT/$AR_REPO/$SERVICE_NAME"
 ```
-The final step is to deploy the service in Cloud Run with the image that we had built and had pushed to the Artifact Registry in the previous step:
+
+**3. Deploy to Cloud Run**
 
 In Cloud Shell, execute the following command:
 ```bash
@@ -100,18 +113,6 @@ gcloud run deploy "$SERVICE_NAME" \
 On successful deployment, you will be provided a URL to the Cloud Run service. You can visit that in the browser to view the Cloud Run application that you just deployed. Choose the functionality that you would like to check out and the application will prompt the Vertex AI Gemini API and display the responses.
 
 Congratulations!
-
-**Web Interface:** The app will open in your web browser.
-
-**Image-Based Generation:** 
-  * Enter an image URL in the designated field.
-  * Provide a descriptive prompt.
-  * Click "Generate descriptions" button.
-    
-**JSON-Based Generation:**
-  * Craft a descriptive prompt for the product.
-  * Upload a JSON file containing your product data.
-  * Click "Generate descriptions" button.
 
 
 **License**
