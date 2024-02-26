@@ -117,6 +117,17 @@ On successful deployment, you will be provided a URL to the Cloud Run service. Y
 
 Congratulations!
 
+### NOTE: You may need to open port 8080. 
 
-**License**
+# Future improvements
+
+* File type and size validation
+* Data structure validation
+* Error handling
+* UI improvements
+   - Loading indicators if larger files are processed
+   - Better output formatting
+
+
+# License
 This project is licensed under the MIT License. See LICENSE for details.
