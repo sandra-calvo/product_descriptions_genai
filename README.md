@@ -23,6 +23,15 @@ This project provides a streamlit application that empowers you to create compel
 
 ![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image2.png)
 
+
+## Simplfied version demo (demo.py)
+
+This application is a simplified version that takes in JSON or CSV file containing product data and allows the user to prompt a Large Language Model in Vertex AI to generate a product description. 
+
+![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image3.png)
+
+To deploy this version make sure you update your Dockerfile with the correct Python file name. 
+
 ## Run the Application locally (on Cloud Shell)
 NOTE: Before you move forward, ensure that you have followed the instructions in SETUP.md. Additionally, ensure that you have cloned this repository and you are currently in the gemini-streamlit-cloudrun folder. This should be your active working directory for the rest of the commands.
 
