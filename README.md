@@ -128,7 +128,7 @@ Congratulations!
 
 ### NOTE: You may need to open port 8080. 
 
-# Future improvements
+## Future improvements
 
 * File type and size validation
 * Data structure validation
@@ -138,5 +138,5 @@ Congratulations!
    - Better output formatting
 
 
-# License
+## License
 This project is licensed under the MIT License. See LICENSE for details.
