@@ -139,4 +139,6 @@ Congratulations!
 
 
 ## License
-This project is licensed under the MIT License.
+This is not an officially supported Google product. The code in this repository is for demonstrative purposes only.
+
+This project is licensed under the Apache License 2.0.
