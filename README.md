@@ -2,35 +2,29 @@
 
 ## Description
 
-This project provides a streamlit application that empowers you to create compelling product descriptions with the help of advanced generative AI models from Google's Vertex AI. It offers two flexible modes to meet your specific needs:
-
-**1. Image-Based Description Generation**
-* Input:
-   - A valid image URL (e.g., a product photo).
-   - A detailed prompt to guide the AI's description (e.g., "Write a product description.").
-     
-* Process: The app leverages Vertex AI, in particula Gemini Pro model, to analyze the image content and understand your prompt. It then crafts descriptions that highlight the image's key features and align with the style you've indicated.
-  
-![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image1.png)
-
-
-**2. JSON-Based Description Generation**
-* Input:
-   - A JSON file containing structured product information (e.g., name, key specifications, materials).
-   - A descriptive prompt to provide context and the desired tone of the descriptions (e.g., "Write an engaging and informative product description for this high-performance laptop").
-
-* Process: The app combines your prompt with the product data from the JSON file. The Vertex AI model generates descriptions that incorporate the factual product information and adhere to the style and tone you've specified in your prompt.
-
-![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image2.png)
-
-
-## Simplfied version demo (demo.py)
-
 This application is a simplified version that takes in JSON or CSV file containing product data and allows the user to prompt a Large Language Model in Vertex AI to generate a product description. 
 
-![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image4.png)
+The Product Description Generator app is a tool that helps you generate product descriptions for your website or e-commerce store. 
+The app uses a large language model from Google Cloud (Gemini-pro) to generate unique and engaging product descriptions.
 
-To deploy this version make sure you update your Dockerfile with the correct Python file name. 
+To use the app: 
+- Upload your product data in JSON or CSV format,
+- Enter a prompt
+- Select a temperature setting. The temperature setting controls the randomness of the generated descriptions. A higher temperature value will result in more random descriptions, while a lower temperature value will result in more structured descriptions.
+- Optionally you can include an URL to your product. The model will use the image URL to generate descriptions.
+
+Once you have entered your product data, prompt, and temperature setting, click the "Generate descriptions" button. 
+The app will then generate a list of product descriptions based on your input.
+
+![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image5.png)
+
+**Here are some tips**
+
+* Use high-quality product data. The better the quality of your product data, the better the generated descriptions will be.
+* Enter a clear and concise prompt. The prompt should give the model a good idea of what kind of descriptions you are looking for.
+* Use a low temperature setting. A low temperature setting will result in more structured descriptions that are less likely to be repetitive.
+* Experiment with different settings. The best way to find the perfect settings for your needs is to experiment with different combinations of temperature, prompt, and product data.
+
 
 ## Run the Application locally (on Cloud Shell)
 NOTE: Before you move forward, ensure that you have followed the instructions in SETUP.md. Additionally, ensure that you have cloned this repository and you are currently in the gemini-streamlit-cloudrun folder. This should be your active working directory for the rest of the commands.
