@@ -19,7 +19,7 @@ import pandas as pd
 import vertexai
 from vertexai.preview.generative_models import GenerativeModel, Part
 
-def generate_descriptions(product_data, prompt, temperature):
+def generate_descriptions(product_data, prompt, temperature, image_url=None):
     model = GenerativeModel("gemini-pro-vision")
 
     # Incorporate product data into the prompt
@@ -63,6 +63,9 @@ def main():
     # Add text above the temperature slider
     st.markdown("The temperature parameter controls the randomness of the generated descriptions. A higher temperature value will result in more random descriptions, while a lower temperature value will result in more structured descriptions.")
 
+    # Image URL input
+    image_url = st.text_input("[Optional]Enter the URL of the image", value="")
+
     # Generate descriptions button
     if st.button("Generate descriptions"):
 
@@ -76,7 +79,7 @@ def main():
                 return
 
             # Generate descriptions
-            output = generate_descriptions(product_data, prompt, temperature)
+            output = generate_descriptions(product_data, prompt, temperature, image_url)
             for description in output['description']:
                 st.write(description)
 
@@ -91,5 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
