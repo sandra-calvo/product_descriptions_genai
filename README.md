@@ -28,7 +28,7 @@ This project provides a streamlit application that empowers you to create compel
 
 This application is a simplified version that takes in JSON or CSV file containing product data and allows the user to prompt a Large Language Model in Vertex AI to generate a product description. 
 
-![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image3.png)
+![image](https://raw.githubusercontent.com/sandra-calvo/product_descriptions_genai/main/screencaptures/image4.png)
 
 To deploy this version make sure you update your Dockerfile with the correct Python file name. 
 
