@@ -1,4 +1,4 @@
-# Product Description Generator with GenAI and Streamlit
+# Product Description Generator with GenAI
 
 ## Description
 
