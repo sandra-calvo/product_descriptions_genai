@@ -19,7 +19,7 @@ import pandas as pd
 import vertexai
 from vertexai.preview.generative_models import GenerativeModel, Part
 
-def generate_descriptions(product_data, prompt):
+def generate_descriptions(product_data, prompt, temperature):
     model = GenerativeModel("gemini-pro-vision")
 
     # Incorporate product data into the prompt
@@ -29,7 +29,7 @@ def generate_descriptions(product_data, prompt):
         prompt,
         generation_config={
             "max_output_tokens": 2048,
-            "temperature": 0.4,
+            "temperature": temperature,
             "top_p": 1,
             "top_k": 32
         },
@@ -57,6 +57,12 @@ def main():
     # Upload product data file
     uploaded_file = st.file_uploader("Upload product data file (JSON or CSV)")
     
+    # Temperature slider
+    temperature = st.slider("Temperature", 0.0, 1.0, 0.4)
+
+    # Add text above the temperature slider
+    st.markdown("The temperature parameter controls the randomness of the generated descriptions. A higher temperature value will result in more random descriptions, while a lower temperature value will result in more structured descriptions.")
+
     # Generate descriptions button
     if st.button("Generate descriptions"):
 
@@ -70,7 +76,7 @@ def main():
                 return
 
             # Generate descriptions
-            output = generate_descriptions(product_data, prompt)
+            output = generate_descriptions(product_data, prompt, temperature)
             for description in output['description']:
                 st.write(description)
 
@@ -85,3 +91,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
